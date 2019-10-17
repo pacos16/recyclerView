@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.rvRecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,4));
         CountryParser countryParser=new CountryParser(this);
         countryParser.parse();
         Country[] countries=countryParser.getCountries();

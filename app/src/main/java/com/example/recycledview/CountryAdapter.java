@@ -31,10 +31,10 @@ private Country[] countries;
 
         public CountryViewHolder(View itemView){
             super(itemView);
-            this.ivFlag= itemView.findViewById(R.id.ivFlag);
-            this.tvCountry=  itemView.findViewById(R.id.tvCountry);
-            this.tvCaptial= itemView.findViewById(R.id.tvCapital);
-            this.tvPopulation= itemView.findViewById(R.id.tvPopulation);
+            this.ivFlag= itemView.findViewById(R.id.ivGridFlag);
+            this.tvCountry=  itemView.findViewById(R.id.tvGridCountry);
+            this.tvCaptial= itemView.findViewById(R.id.tvGridCapital);
+            this.tvPopulation= itemView.findViewById(R.id.tvGridPopulation);
         }
         public void bindCountry(Country country){
             tvCountry.setText(country.getCountryName());
@@ -42,7 +42,10 @@ private Country[] countries;
             tvPopulation.setText(""+country.getCountryPopulation());
             int id = itemView.getContext().getResources().getIdentifier("_"+country.getCountryCode().toLowerCase(),
                     "drawable", ivFlag.getContext().getPackageName());
+            if (id==0) id= R.drawable.ic_launcher_background;
+
             ivFlag.setImageResource(id);
+
         }
     }
 
@@ -50,7 +53,7 @@ private Country[] countries;
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_country,parent,false);
+                .inflate(R.layout.grid_layout,parent,false);
         return new CountryViewHolder(itemView);
 
 
